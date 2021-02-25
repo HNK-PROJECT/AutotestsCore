@@ -84,19 +84,8 @@ def test_create_sp(browser):
     jeans_case.go_to_jeans()
     jeans_case.go_to_sp_module()
     jeans_case.create_sp()
-
-
-@allure.feature('Lets find our sale point')
-@allure.story('Поиск торговой точки через поле быстрого поиска')
-@allure.severity('blocker')
-def test_find_sp(browser):
-    jeans_case = JeansProject(browser, corelink)
-    case_core = CoreProject(browser, corelink)
-    jeans_case.open()
-    case_core.core_authorization()
-    jeans_case.go_to_jeans()
-    jeans_case.go_to_sp_module()
     jeans_case.find_sp()
+
 
 
 @allure.feature('Open promo module')

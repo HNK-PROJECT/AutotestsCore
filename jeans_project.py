@@ -16,6 +16,7 @@ class JeansProject(BasePage):
     def go_to_jeans(self):
         jeans = self.browser.find_element(*JeansLocators.BUTTONJEANS)
         jeans.click()
+        time.sleep(3)
 
     def go_to_sp_module(self):
         btnsp = self.browser.find_element(*JeansLocators.SP)

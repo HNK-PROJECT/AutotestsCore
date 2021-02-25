@@ -61,7 +61,7 @@ class TimProject(BasePage):
         time.sleep(5)
         draftlist = self.browser.find_element(*TimLocators.DRAFTLIST)
         draftlist.click()
-        movecontract = self.browser.find_element(*TimLocators.DRAFTMOVE)
+        movecontract = self.browser.find_elements(*TimLocators.DRAFTMOVE)
         for element in movecontract:
             time.sleep(3)
             element.click()
