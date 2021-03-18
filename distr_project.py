@@ -16,7 +16,7 @@ class DistributorProject(BasePage):
         auth = self.browser.find_element(*DistributorLocators.LOGIN)
         auth.send_keys('nurtestdistr')
         auth = self.browser.find_element(*DistributorLocators.PASSWORD)
-        auth.send_keys('Demo!1234')
+        auth.send_keys('Tim!1234')
         auth = self.browser.find_element(*DistributorLocators.ENTER)
         auth.click()
         time.sleep(3)

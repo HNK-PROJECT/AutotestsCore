@@ -9,8 +9,10 @@ import allure
 
 #  blocker critical normal minorcd
 
-corelink = 'https://demo.core.heineken.com/CAWA/signin'
-distrlink = 'https://demo.core.heineken.com/JDWA/login'
+corelink = 'https://core.heineken.com/CAWA/signin'
+distrlink = 'https://jeans.heineken.com/distradmin/login'
+    #'https://demo.core.heineken.com/JDWA/login'
+
 
 
 
@@ -22,3 +24,24 @@ def test_authorization_distr(browser):
     distr_case = DistributorProject(browser, distrlink)
     distr_case.open()
     distr_case.distr_authorization()
+
+
+@allure.feature('Open distr orders')
+@allure.story('Открываем модуль заказ')
+@allure.severity('critical')
+def test_open_orders_distr(browser):
+    distr_case = DistributorProject(browser, distrlink)
+    distr_case.open()
+    distr_case.distr_authorization()
+    distr_case.distr_orders()
+
+
+@allure.feature('Dowload orders excel')
+@allure.story('Выгрузка файла excel данных по заказам')
+@allure.severity('normal')
+def test_orders_excel_distr(browser):
+    distr_case = DistributorProject(browser, distrlink)
+    distr_case.open()
+    distr_case.distr_authorization()
+    distr_case.distr_orders()
+    distr_case.distr_orders_excel()

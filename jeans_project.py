@@ -32,7 +32,7 @@ class JeansProject(BasePage):
         status_sp_choose = self.browser.find_element(*JeansLocators.STATUSSPCHOOSE)
         status_sp_choose.click()
         namesp = self.browser.find_element(*JeansLocators.NAMESP)
-        namesp.send_keys("AutomateCreatedSalePoint")
+        namesp.send_keys("AutomateCreatedSalePoint1")
         channel = self.browser.find_element(*JeansLocators.CHANNELCLICK)
         channel.click()
         channel = self.browser.find_element(*JeansLocators.CHANNELCHOOSE)
@@ -94,7 +94,7 @@ class JeansProject(BasePage):
 
     def find_sp(self):
         find = self.browser.find_element(*JeansLocators.FIND)
-        find.send_keys("AutomateCreatedSalePoint")
+        find.send_keys("AutomateCreatedSalePoint1")
         time.sleep(3)
         with allure.step('Фиксируем результат поиска скриншотом'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
