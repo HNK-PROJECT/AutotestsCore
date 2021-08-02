@@ -5,7 +5,7 @@ from .locators import CoreLocators
 from .locators import MainMenuLocators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from allure_commons.types import AttachmentType
@@ -17,15 +17,16 @@ class CoreProject(BasePage):
         login = self.browser.find_element(*MainMenuLocators.LOGIN)
         login.send_keys('nursrm')
         login = self.browser.find_element(*MainMenuLocators.PASSWORD)
-        login.send_keys('Tim!1234')
+        login.send_keys('Demo!1234')
         login = self.browser.find_element(*MainMenuLocators.ENTER)
         login.click()
-        time.sleep(3)
+        WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.item:nth-child(3) > app-card:nth-child(1) > div:nth-child(1)'))
+        )
 
     def choose_core_project(self):
         go_to_core = self.browser.find_element(*CoreLocators.BUTTONCORE)
         go_to_core.click()
-        time.sleep(3)
 
     def choose_company_menu(self):
         go_to_company = self.browser.find_element(*CoreLocators.COMPANYBUTTON)
@@ -92,6 +93,11 @@ class CoreProject(BasePage):
         delete_user.click()
         delete_agree = self.browser.find_element(*CoreLocators.AGREE)
         delete_agree.click()
-        time.sleep(3)
+        WebDriverWait(self.browser, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.notify:nth-child(2)'))
+        )
+        with allure.step('Фиксируем результат скриншотом'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+
 
 

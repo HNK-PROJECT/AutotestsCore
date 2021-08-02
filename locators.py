@@ -78,7 +78,7 @@ class JeansLocators:
     DISCOUNT3 = (By.CSS_SELECTOR, 'body > div.modal.fade.ng-isolate-scope.false.in > div > div > div > div.df.pt10 > div.block.w470.pt10 > div.block-form > div:nth-child(7) > div > div > div > span')
     DISCOUNT4 = (By.CSS_SELECTOR, 'body > div.modal.fade.ng-isolate-scope.false.in > div > div > div > div.df.pt10 > div.block.w470.pt10 > div.block-form > div:nth-child(7) > div > div > ul')
     AUTOIN = (By.CSS_SELECTOR, '[Placeholder="Автозаполнение"]')
-    SKUPROMO = (By.CSS_SELECTOR, '#Id115')
+    SKUPROMO = (By.CSS_SELECTOR, '#Id6768412')
     SAVEPROMO = (By.CSS_SELECTOR, 'body > div.modal.fade.ng-isolate-scope.false.in > div > div > div > div:nth-child(3) > button.btn.btn-primary.ng-scope')
     VISIT = (By.CSS_SELECTOR, 'li.ng-scope:nth-child(6) > a:nth-child(1)')
     DATEFROMVISIT1 = (By.CSS_SELECTOR, 'body > div.main-view.container-fluid.plr0.ng-scope > div.container.ng-scope > div > div > div.row.toolbar.wide.mt0.mr0.mb0.ml0 > div > div:nth-child(3)')

@@ -11,11 +11,10 @@ def browser(request):
     if browser_name == "Chrome":
         browser = webdriver.Chrome()
         browser.maximize_window()
-        browser.implicitly_wait(10)
     elif browser_name == "Firefox":
         browser = webdriver.Firefox()
         browser.maximize_window()
-        browser.implicitly_wait(10)
+        browser.implicitly_wait(30)
     else:
         print(f'\nWhoopsie! {browser_name} browser is not supported. Starting Chrome instead')
         browser = webdriver.Chrome()
@@ -27,3 +26,4 @@ def browser(request):
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default='Chrome',
         help="Choose browser: Chrome or Firefox")
+

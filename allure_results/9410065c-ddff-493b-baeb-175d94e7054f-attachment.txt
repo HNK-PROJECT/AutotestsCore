@@ -1,0 +1,4 @@
+
+Starting browser Firefox.
+
+Browser shutdown.

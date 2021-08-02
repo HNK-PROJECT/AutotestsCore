@@ -4,10 +4,8 @@ from .base_page import BasePage
 from .locators import JeansLocators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 from allure_commons.types import AttachmentType
 
 
@@ -16,23 +14,27 @@ class JeansProject(BasePage):
     def go_to_jeans(self):
         jeans = self.browser.find_element(*JeansLocators.BUTTONJEANS)
         jeans.click()
-        time.sleep(3)
+        time.sleep(2)
 
     def go_to_sp_module(self):
+        time.sleep(3)
         btnsp = self.browser.find_element(*JeansLocators.SP)
+        btnsp = WebDriverWait(self.browser, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, '.flaticon-shopping13'))
+        )
         btnsp.click()
-        time.sleep(5)
+        time.sleep(3)
 
     def create_sp(self):
         createsp = self.browser.find_element(*JeansLocators.CREATESP)
         createsp.click()
-        time.sleep(5)
         statussp = self.browser.find_element(*JeansLocators.STATUSSPCLICK)
         statussp.click()
+        time.sleep(1)
         status_sp_choose = self.browser.find_element(*JeansLocators.STATUSSPCHOOSE)
         status_sp_choose.click()
         namesp = self.browser.find_element(*JeansLocators.NAMESP)
-        namesp.send_keys("AutomateCreatedSalePoint1")
+        namesp.send_keys("AutomateCreatedSalePoint2 ")
         channel = self.browser.find_element(*JeansLocators.CHANNELCLICK)
         channel.click()
         channel = self.browser.find_element(*JeansLocators.CHANNELCHOOSE)
@@ -58,8 +60,8 @@ class JeansProject(BasePage):
                 break
         city = self.browser.find_element(*JeansLocators.CITY)
         city.click()
-        time.sleep(3)
         city = self.browser.find_element(*JeansLocators.CITYCHOSE)
+        time.sleep(1)
         for option in city.find_elements_by_tag_name('div'):
             if option.text == 'Baikalsk':
                 option.click()
@@ -73,8 +75,8 @@ class JeansProject(BasePage):
                 break
         warehouse = self.browser.find_element(*JeansLocators.WAREHOUSE)
         warehouse.click()
-        time.sleep(3)
         warehouse = self.browser.find_element(*JeansLocators.WAREHOUSECHOOSE)
+        time.sleep(1)
         for option in warehouse.find_elements_by_tag_name('div'):
             if option.text == '1234':
                 option.click()
@@ -90,22 +92,23 @@ class JeansProject(BasePage):
         time.sleep(3)
         btn_save_sp = self.browser.find_element(*JeansLocators.SAVESP)
         btn_save_sp.click()
-        time.sleep(3)
 
     def find_sp(self):
         find = self.browser.find_element(*JeansLocators.FIND)
         find.send_keys("AutomateCreatedSalePoint1")
-        time.sleep(3)
+        WebDriverWait(self.browser, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.Table-row:nth-child(2) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) > i:nth-child(1)'))
+        )
+        time.sleep(2)
         with allure.step('Фиксируем результат поиска скриншотом'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
 
     def delete_sp(self):
         edit = self.browser.find_element(*JeansLocators.EDITSP)
         edit.click()
-        time.sleep(2)
         delete = self.browser.find_element(*JeansLocators.STATUSSPCLICK)
         delete.click()
-        delete = self.browser.find_element(*JeansLocators.STATUSDELETESPCHOOSE)
+        delete = self.browser.find_element(*JeansLocators.STATUSSPCHOOSE)
         for option in delete.find_elements_by_tag_name('div'):
             if option.text == 'Удалена':
                 option.click()
@@ -126,6 +129,9 @@ class JeansProject(BasePage):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
 
     def go_to_promo(self):
+        skumodule = WebDriverWait(self.browser, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, '.flaticon-shopping13'))
+        )
         skumodule = self.browser.find_element(*JeansLocators.SKUASSORT)
         skumodule.click()
         submenu = self.browser.find_element(*JeansLocators.SUBMENU)
@@ -137,12 +143,12 @@ class JeansProject(BasePage):
         create_promo.click()
         namepromo = self.browser.find_element(*JeansLocators.NAMEPROMO)
         namepromo.send_keys("AutomateCreatePromo")
-        terms =self.browser.find_element(*JeansLocators.TERMSPROMO)
+        terms = self.browser.find_element(*JeansLocators.TERMSPROMO)
         terms.send_keys("Terms")
         datefrom = self.browser.find_element(*JeansLocators.DATEFROMPROMO)
         datefrom.click()
         datefrom.click()
-        datefrom.send_keys("01/01/2021")
+        datefrom.send_keys("01/07/2021")
         discount = self.browser.find_element(*JeansLocators.DISCOUNT1)
         discount.click()
         discount = self.browser.find_element(*JeansLocators.DISCOUNT2)
@@ -170,12 +176,12 @@ class JeansProject(BasePage):
         datefrom.click()
         datefrom = self.browser.find_element(*JeansLocators.DATEFROMVISIT2)
         datefrom.clear()
-        datefrom.send_keys("01/02/2021")
+        datefrom.send_keys("01/07/2021")
         dateto = self.browser.find_element(*JeansLocators.DATETOVISIT1)
         dateto.click()
         dateto = self.browser.find_element(*JeansLocators.DATETOVISIT2)
         dateto.clear()
-        dateto.send_keys("07/02/2021")
+        dateto.send_keys("07/07/2021")
         dateto.click()
         visitbind = self.browser.find_element(*JeansLocators.VISITBIND)
         visitbind.click()
