@@ -87,6 +87,14 @@ class JeansLocators:
     DATETOVISIT2 = (By.CSS_SELECTOR, 'body > div.main-view.container-fluid.plr0.ng-scope > div.container.ng-scope > div > div > div.row.toolbar.wide.mt0.mr0.mb0.ml0 > div > div:nth-child(4) > div > div > input')
     VISITBIND = (By.CSS_SELECTOR, '#routing-table-wrap > div:nth-child(2) > div > div:nth-child(4)')
     SAVEVISIT = (By.CSS_SELECTOR, '[ng-click="saveVisits()"]')
+    OPEN_TASK = (By.CSS_SELECTOR, 'ul.plr0 > li:nth-child(2) > a:nth-child(1)')
+    MASS_CREATE_TASK = (By.CSS_SELECTOR, '.btn-primary')
+    MASSTASK_TYPE_CLICK = (By.CSS_SELECTOR, '.w160 > div:nth-child(1) > span:nth-child(1)')
+    MASSTASK_TYPE_CHOOSE = (By.CSS_SELECTOR, '#ui-select-choices-row-9-1 > a:nth-child(1) > div:nth-child(1)')
+    MASSTASK_DESCRIPTION = (By.CSS_SELECTOR, 'textarea.form-control')
+    MASSTASK_DATE = (By.CSS_SELECTOR, '.ng-invalid')
+    MASSTASK_SAVE = (By.CSS_SELECTOR, '.col-md-9 > button:nth-child(1)')
+
 
 class TimLocators:
     BUTTONTIM = (By.CSS_SELECTOR, '[title="Web-приложение для управления торговыми инвестициями."]')

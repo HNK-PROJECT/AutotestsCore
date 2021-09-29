@@ -16,6 +16,9 @@ class TimProject(BasePage):
         tim = self.browser.find_element(*TimLocators.BUTTONTIM)
         tim.click()
         time.sleep(4)
+        with allure.step('Фиксируем  контракты'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+
 
     def create_contract(self):
         createcontract = self.browser.find_element(*TimLocators.CREATECONTRACT)
@@ -61,6 +64,8 @@ class TimProject(BasePage):
         time.sleep(5)
         draftlist = self.browser.find_element(*TimLocators.DRAFTLIST)
         draftlist.click()
+        with allure.step('Фиксируем  статусы скриншотом скриншотом'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
         movecontract = self.browser.find_elements(*TimLocators.DRAFTMOVE)
         for element in movecontract:
             time.sleep(3)

@@ -16,7 +16,7 @@ class DistributorProject(BasePage):
         auth = self.browser.find_element(*DistributorLocators.LOGIN)
         auth.send_keys('nurtestdistr')
         auth = self.browser.find_element(*DistributorLocators.PASSWORD)
-        auth.send_keys('Demo!1234')
+        auth.send_keys('Tim!1234')
         auth = self.browser.find_element(*DistributorLocators.ENTER)
         auth.click()
         self.browser.find_element(By.CSS_SELECTOR, '.buttonSave')
@@ -29,6 +29,7 @@ class DistributorProject(BasePage):
         self.browser.find_element(By.CSS_SELECTOR, '.getExcel')
         with allure.step('Фиксируем результат скриншотом'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+        time.sleep(3)
 
     def distr_orders_excel(self):
         excel = self.browser.find_element(*DistributorLocators.ORDERSEXCEL)

@@ -26,6 +26,7 @@ class JeansProject(BasePage):
         time.sleep(3)
 
     def create_sp(self):
+        time.sleep(3)
         createsp = self.browser.find_element(*JeansLocators.CREATESP)
         createsp.click()
         statussp = self.browser.find_element(*JeansLocators.STATUSSPCLICK)
@@ -34,7 +35,7 @@ class JeansProject(BasePage):
         status_sp_choose = self.browser.find_element(*JeansLocators.STATUSSPCHOOSE)
         status_sp_choose.click()
         namesp = self.browser.find_element(*JeansLocators.NAMESP)
-        namesp.send_keys("AutomateCreatedSalePoint2 ")
+        namesp.send_keys("AutomateCreatedSalePoint55")
         channel = self.browser.find_element(*JeansLocators.CHANNELCLICK)
         channel.click()
         channel = self.browser.find_element(*JeansLocators.CHANNELCHOOSE)
@@ -92,10 +93,14 @@ class JeansProject(BasePage):
         time.sleep(3)
         btn_save_sp = self.browser.find_element(*JeansLocators.SAVESP)
         btn_save_sp.click()
+        time.sleep(1)
+        with allure.step('Фиксируем сохранение'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+        time.sleep(15)
 
     def find_sp(self):
         find = self.browser.find_element(*JeansLocators.FIND)
-        find.send_keys("AutomateCreatedSalePoint1")
+        find.send_keys("AutomateCreatedSalePoint55")
         WebDriverWait(self.browser, 5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.Table-row:nth-child(2) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) > i:nth-child(1)'))
         )
@@ -193,6 +198,36 @@ class JeansProject(BasePage):
         time.sleep(5)
         with allure.step('Фиксируем результат создания промо скриншотом'):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+
+    def go_to_tasks(self):
+        task_page = self.browser.find_element(*JeansLocators.OPEN_TASK)
+        task_page.click()
+        time.sleep(3)
+        with allure.step('Фиксируем результат списка задач'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+        time.sleep(3)
+
+    def mass_create_task(self):
+        mass_task = self.browser.find_element(*JeansLocators.MASS_CREATE_TASK)
+        mass_task.click()
+        time.sleep(1)
+        mass_task_input = self.browser.find_element(*JeansLocators.MASSTASK_TYPE_CLICK)
+        mass_task_input.click()
+        time.sleep(1)
+        mass_task_input = self.browser.find_element(*JeansLocators.MASSTASK_TYPE_CHOOSE)
+        mass_task_input.click()
+        time.sleep(1)
+        mass_task_input = self.browser.find_element(*JeansLocators.MASSTASK_DATE)
+        mass_task_input.send_keys("01/01/2022")
+        mass_task_input.click()
+        mass_task_input = self.browser.find_element(*JeansLocators.MASSTASK_DESCRIPTION)
+        mass_task_input.send_keys("Автоматически созданная задача. By PyTest")
+        mass_task_input = self.browser.find_element(*JeansLocators.MASSTASK_SAVE)
+        mass_task_input.click()
+        time.sleep(3)
+        with allure.step('Фиксируем результат создания задач'):
+            allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
+        time.sleep(3)
 
 
 

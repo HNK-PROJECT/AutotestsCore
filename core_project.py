@@ -27,6 +27,7 @@ class CoreProject(BasePage):
     def choose_core_project(self):
         go_to_core = self.browser.find_element(*CoreLocators.BUTTONCORE)
         go_to_core.click()
+        time.sleep(3)
 
     def choose_company_menu(self):
         go_to_company = self.browser.find_element(*CoreLocators.COMPANYBUTTON)
@@ -39,6 +40,7 @@ class CoreProject(BasePage):
     def do_create_user(self):
         click_create_user = self.browser.find_element(*CoreLocators.CREATEUSER)
         click_create_user.click()
+        time.sleep(3)
         cin_name = self.browser.find_element(*CoreLocators.INNAME)
         cin_name.send_keys("Automate")
         cin_second_name = self.browser.find_element(*CoreLocators.INSECONDNAME)
@@ -58,7 +60,7 @@ class CoreProject(BasePage):
         click_distr.click()
         choose_distr = self.browser.find_element(*CoreLocators.DISTR2)
         for option in choose_distr.find_elements(By.TAG_NAME, 'div'):
-            if option.text == 'ООО "Алкон"':
+            if option.text == 'Nurtestdistr':
                 option.click()
                 break
         cin_login = self.browser.find_element(*CoreLocators.LOGIN)
@@ -87,6 +89,7 @@ class CoreProject(BasePage):
             allure.attach(self.browser.get_screenshot_as_png(), name='Scr_User', attachment_type=AttachmentType.PNG)
 
     def do_delete_user(self):
+        time.sleep(3)
         edit_user = self.browser.find_element(*CoreLocators.EDIT)
         edit_user.click()
         delete_user = self.browser.find_element(*CoreLocators.DELETE)
