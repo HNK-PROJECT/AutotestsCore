@@ -14,9 +14,9 @@ class DistributorProject(BasePage):
 
     def distr_authorization(self):
         auth = self.browser.find_element(*DistributorLocators.LOGIN)
-        auth.send_keys('nurtestdistr')
+        auth.send_keys('123')
         auth = self.browser.find_element(*DistributorLocators.PASSWORD)
-        auth.send_keys('Tim!1234')
+        auth.send_keys('123')
         auth = self.browser.find_element(*DistributorLocators.ENTER)
         auth.click()
         self.browser.find_element(By.CSS_SELECTOR, '.buttonSave')
