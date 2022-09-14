@@ -8,10 +8,9 @@ import allure
 # C:\Users\Kim\Desktop\Autotests> allure serve allure_results
 
 
-corelink = 'https://demo.core.heineken.com/CAWA/signin'
-distrlink = 'https://jeans.heineken.com/distradmin/login'
+corelink = '123'
+distrlink = '123'
 
-    #'https://demo.core.heineken.com/JDWA/login'
 
 
 @allure.feature('Create mass tasks')
