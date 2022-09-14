@@ -15,9 +15,9 @@ class CoreProject(BasePage):
 
     def core_authorization(self):
         login = self.browser.find_element(*MainMenuLocators.LOGIN)
-        login.send_keys('nursrm')
+        login.send_keys('1234')
         login = self.browser.find_element(*MainMenuLocators.PASSWORD)
-        login.send_keys('Demo!1234')
+        login.send_keys('1234')
         login = self.browser.find_element(*MainMenuLocators.ENTER)
         login.click()
         WebDriverWait(self.browser, 10).until(
